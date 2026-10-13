@@ -1,5 +1,5 @@
 print(imie)
 
-imie = "Czarek"
+imie = "Bartek"
 
 print(imiee)
