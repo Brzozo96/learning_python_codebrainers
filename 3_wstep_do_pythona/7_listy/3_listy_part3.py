@@ -16,3 +16,6 @@ super_lista = [
 
 print(super_lista[-1][-1])
 
+ostatnia_lista = super_lista[-1]
+ostatnia_litera = ostatnia_lista[-1]
+print(ostatnia_litera)
