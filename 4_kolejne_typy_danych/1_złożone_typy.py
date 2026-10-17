@@ -21,3 +21,4 @@ krotki = ("Artur", "Bartek", "Czarek")
 zbiory = {"Artur", "Bartek", "Czarek"}
 
 print(type(lista))
+
