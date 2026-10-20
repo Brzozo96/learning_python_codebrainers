@@ -1,0 +1,5 @@
+login, hasło
+login1, password
+admin, admin
+admin, dupa123
+admin, tajneHasło
