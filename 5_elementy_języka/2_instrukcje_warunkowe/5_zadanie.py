@@ -18,3 +18,11 @@ elif not is_adult:
 else:
     print("poza zakresem")
 
+
+
+if not is_adult:
+    print("Jesteś nieletni")
+elif not is_male:
+    print("Kobieta dorosła")
+else:
+    print("Możesz iść na pobór do wojska")
