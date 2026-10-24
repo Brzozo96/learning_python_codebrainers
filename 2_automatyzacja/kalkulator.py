@@ -8,6 +8,11 @@ def pomnoz(a, b):
     return a * b
     
 def podziel(a, b):
-    if b == 0:
+    try:
+        return float(a) / float(b)
+    except ZeroDivisionError:
         raise ValueError("Nie można dzielić przez zero!")
-    return a / b
+    except TypeError:
+        raise ValueError("Niepoprawne typy danych!")
+    finally:
+        print("Wykonano operację dzielenia")
