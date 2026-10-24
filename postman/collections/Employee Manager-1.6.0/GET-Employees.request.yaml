@@ -1,0 +1,37 @@
+$kind: http-request
+url: "{{base_url}}/employees"
+method: GET
+headers:
+  accept: "*/*"
+body:
+  type: json
+  content: ""
+scripts:
+  - type: beforeRequest
+    code: |-
+      const baseUrl = pm.variables.replaceIn('{{base_url}}');
+      const username = pm.variables.replaceIn('{{username}}');
+      const password = pm.variables.replaceIn('{{password}}');
+      pm.sendRequest({
+        url: `${baseUrl}/login`,
+        method: 'POST',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        body: {
+          mode: 'raw',
+          raw: JSON.stringify({ username, password })
+        }
+      }, (error, response) => {
+        if (error) throw error;
+        if (response.code !== 200) {
+          throw new Error(`Login failed with status ${response.code}`);
+        }
+        const token = response.json().access_token;
+        if (!token) {
+          throw new Error('Login response does not contain access_token');
+        }
+        pm.environment.set('token', token);
+      });
+    language: text/javascript
+order: 2000

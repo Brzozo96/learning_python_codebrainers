@@ -1,0 +1,80 @@
+$kind: http-request
+url: "{{base_url}}/employees"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"{{emp_name}}\",\r
+
+    \  \"salary\": {{emp_salary}},\r
+
+    \  \"age\": 18,\r
+
+    \  \"position\": \"Junior QA\",\r
+
+    \  \"on_leave\": false\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{Token}}"
+scripts:
+  - type: beforeRequest
+    code: "const baseUrl = pm.variables.replaceIn('{{base_url}}');\r
+
+      const username = pm.variables.replaceIn('{{username}}');\r
+
+      const password = pm.variables.replaceIn('{{password}}');\r
+
+      pm.sendRequest({\r
+
+      \  url: `${baseUrl}/login`,\r
+
+      \  method: 'POST',\r
+
+      \  header: {\r
+
+      \    'Content-Type': 'application/json'\r
+
+      \  },\r
+
+      \  body: {\r
+
+      \    mode: 'raw',\r
+
+      \    raw: JSON.stringify({ username, password })\r
+
+      \  }\r
+
+      }, (error, response) => {\r
+
+      \  if (error) throw error;\r
+
+      \  if (response.code !== 200) {\r
+
+      \    throw new Error(`Login failed with status ${response.code}`);\r
+
+      \  }\r
+
+      \  const token = response.json().access_token;\r
+
+      \  if (!token) {\r
+
+      \    throw new Error('Login response does not contain access_token');\r
+
+      \  }\r
+
+      \  pm.environment.set('token', token);\r
+
+      });"
+    language: text/javascript
+  - type: afterResponse
+    code: "// const jsonData = pm.response.json();\r
+
+      \r
+
+      // pm.collectionVariables.set(\"emp_id\", jsonData.id);"
+    language: text/javascript
+order: 3000

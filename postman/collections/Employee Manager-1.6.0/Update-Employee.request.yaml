@@ -1,0 +1,23 @@
+$kind: http-request
+url: "{{base_url}}/employees/{{emp_id}}"
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"{{emp_name}}\",\r
+
+    \  \"salary\": {{emp_salary}},\r
+
+    \  \"age\": 18,\r
+
+    \  \"position\": \"Mid QA\",\r
+
+    \  \"on_leave\": false\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 4000
