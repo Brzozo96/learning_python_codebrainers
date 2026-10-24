@@ -1,0 +1,29 @@
+'''
+1. Stwórz plik conftest.py:
+Utwórz nową fixture o nazwie uzytkownik_premium.
+Fixture ma zwracać słownik reprezentujący dane testowe klienta
+{
+"username": "tester_pro",
+"email": "tester@example.com",
+"is_premium": True,
+"punkty": 120
+}
+2.
+Napisz test jednostkowy o nazwie test_weryfikacja_uzytkownika_premium.
+Wstrzyknij do funkcji testowej fixture uzytkownik_premium.
+Dodaj asercje (assert) weryfikujące, że:
+- Użytkownik posiada status premium (is_premium wynosi True).
+- Liczba punktów (punkty) jest większa bądź równa 100.
+- Adres email zawiera znak @.
+3. Uruchom test
+'''
+
+
+import pytest
+
+@pytest.mark.zadanie_z_fixture
+
+def test_weryfikacja_uzytkownika_premium(uzytkownik_premium):
+    assert uzytkownik_premium["is_premium"] == True
+    assert uzytkownik_premium["punkty"] >= 100
+    assert "@" in uzytkownik_premium["email"]
