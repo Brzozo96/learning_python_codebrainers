@@ -22,8 +22,15 @@ Dodaj asercje (assert) weryfikujące, że:
 import pytest
 
 @pytest.mark.zadanie_z_fixture
+def test_weryfikacja_uzytkownika_premium(uzytkownik_premium, logger):
+    # logger.debug("debug")
+    # logger.info("info")
+    # logger.warning("warning")
+    # logger.error("error")
+    # logger.critical("critical")
 
-def test_weryfikacja_uzytkownika_premium(uzytkownik_premium):
     assert uzytkownik_premium["is_premium"] == True
     assert uzytkownik_premium["punkty"] >= 100
     assert "@" in uzytkownik_premium["email"]
+
+
