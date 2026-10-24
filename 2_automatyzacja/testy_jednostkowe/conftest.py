@@ -13,12 +13,10 @@ def przygotowanie_autouse():
     yield
     print("\n Koniec sesji".upper())
 
-
 @pytest.fixture
 def oczekiwany_wynik_dodawania():
     return 3
     
-
 @pytest.fixture
 def uzytkownik_premium():
     słownik = {
