@@ -1,8 +1,4 @@
 import pytest
-
-import logging
-
-
 import logging
 @pytest.fixture(autouse=True)
 def logger(request):
@@ -10,8 +6,6 @@ def logger(request):
     log.info("START: %s", request.node.nodeid)
     yield log
     log.info("KONIEC: %s", request.node.nodeid)
-
-
 
 @pytest.fixture
 def przygotowanie():
