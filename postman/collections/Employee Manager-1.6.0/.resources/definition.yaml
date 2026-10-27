@@ -1,0 +1,16 @@
+$kind: collection
+variables:
+  token: ""
+  base_url: ""
+  emp_id: ""
+  emp_name: ""
+  emp_salary: ""
+  username: ""
+  password: ""
+  Token: ""
+auth:
+  - id: 81bc23af-9378-4f1c-9d44-8a948cc02f05
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{vault:token}}"

@@ -1,0 +1,9 @@
+workspace:
+  id: a04bf701-3b59-46db-a873-2a9d0719c930
+cloudResources:
+  collections:
+    ../postman/collections/Employee Manager-1.6.0: 58792630-4bccc6be-7918-4d33-a394-414adf794acd
+  environments:
+    ../postman/environments/dev-1.environment.yaml: 58792630-888cefaf-1161-45a0-8bf6-5c62dfdd8e66
+  globals:
+    ../postman/globals/workspace.globals.yaml: 59f78f4b-4995-4852-8825-94e68bbef367
